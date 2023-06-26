@@ -7,4 +7,5 @@ pandas==1.3.5
 Werkzeug==2.2.3
 opencv-python==4.7.0.72
 python version==3.8.16
+spyder==5.4.2
 HTML file should be in template folder
