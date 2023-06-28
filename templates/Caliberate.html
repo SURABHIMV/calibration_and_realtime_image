@@ -1,0 +1,78 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jun 24 12:34:20 2023
+
+@author: hp
+"""
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Preprocess Image</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Caliberate</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td><label for="image">Select an image:</label></td>
+                <td><input type="file" name="image" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Upload and Preprocess"></td>
+            </tr>
+        </table>
+    </form>
+    {% if num_contours %}
+    {% if length %}
+    {% if width %}
+    {% if filename %}
+
+    <table>
+           <tr>
+                <th>Original image</th>
+                <th>Serial Number</th>
+                <th>Shape</th>
+                <th>Pixel Length</th>
+                <th>Pixel Width</th>
+                <th>Actual length</th>
+                <th>Actual width</th> 
+
+
+
+           </tr>
+            
+           {% for i in range(num_contours) %}
+               
+                <tr>
+                    {% if i == 0 %}
+                        <td rowspan="{{ num_contours }}"><img src="{{ url_for('static', filename='org_image/' ~ filename) }}"></td>
+                    {% endif %}
+                    <td>{{ i+1 }}</td>
+                    <td><img src="{{ url_for('static', filename='image/contour_' ~ i|string ~ '.png') }}" alt="Contour {{ i+1 }}"></td>
+                    <td>{{ length[i] }}</td>
+                    <td>{{ width[i] }}</td>
+                    <td><input type="text" name="length_{{ i }}" required></td>
+                    <td><input type="text" name="width_{{ i }}" required></td>  
+                </tr>
+           {% endfor %}
+            
+    </table>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %} 
+
+
+</body>
+</html>
+       
