@@ -1,7 +1,7 @@
 * realtime_app.py(where extraction of image all preprocessing is done and stored in a folder and at time of flask application runtime this preprocessed image is extracted) and 
 * templates folder( contain HTML files such as Calibrate, ViewCaliberate, RealTime,Statistics).HTML file should be in the template folder then only Flask app will run.
-* data.text contains the dictionary format of data in which the key is (imagename+index) and the value (multiplication factor)
-* data.text contain information of image (images_top12.jpg)
+* data.text contains the dictionary format of data in which the key1 is (len_image name), value1 (multiplication factors of all contour length) and key2 is (wid_image_name) ,value2(multiplication factors of all contour width)
+* data.text contains information about the image (images_top12.jpg)
 
 #libraries versions used
 Flask==2.2.2
