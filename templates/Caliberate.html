@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Preprocess Image</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Caliberate</h1>
+    <form action="/preprocess_image" method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td><label for="image">Select an image:</label></td>
+                <td><input type="file" name="image" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Upload and Preprocess"></td>
+            </tr>
+        </table>
+    </form>
+    {% if num_contours %}
+       
+        <form action="/mask_image" method="post">
+            <table>
+                {% for i in range(num_contours) %}
+                    <tr>
+                        <td><label for="length_{{ i }}">length for contour {{ i }}:</label></td>
+                        <td><input type="text" name="length_{{ i }}" required></td>
+                        <td><label for="width_{{ i }}">width for contour {{ i }}:</label></td>
+                        <td><input type="text" name="width_{{ i }}" required></td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="2"><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+    {% if length %}
+    {% if width %}
+    {% if filename %}
+    {% if actual_length %}
+    {% if actual_width %}
+    {% if MFl %}
+    {% if MFw %}
+    <table>
+           <tr>
+                <th>Original image</th>
+                <th>Serial Number</th>
+                <th>Shape</th>
+                <th>Pixel Length</th>
+                <th>Pixel Width</th>
+                <th>Actual length</th>
+                <th>Actual width</th> 
+                <th>MF length</th>
+                <th>MF width</th>
+
+
+           </tr>
+            
+           {% for i in range(num_contours) %}
+               
+                <tr>
+                    {% if i == 0 %}
+                        <td rowspan="{{ num_contours }}"><img src="{{ url_for('static', filename='org_image/' ~ filename) }}"></td>
+                    {% endif %}
+                    <td>{{ i+1 }}</td>
+                    <td><img src="{{ url_for('static', filename='image/contour_' ~ i|string ~ '.png') }}" alt="Contour {{ i+1 }}"></td>
+                    <td>{{ length[i] }}</td>
+                    <td>{{ width[i] }}</td>
+                    <td>{{ actual_length[i] }}</td>
+                    <td>{{ actual_width[i] }}</td>
+                    <td>{{ MFl[i] }}</td>
+                    <td>{{ MFw[i] }}</td>  
+                </tr>
+           {% endfor %}
+            
+    </table>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %} 
+    {% endif %}
+    {% endif %} 
+    {% endif %}
+    {% endif %} 
+    
+    <form action="{{ url_for('index') }}" method="get">
+    <button type="submit">Go back to index</button>
+</body>
+</html>
+       
