@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload and Preprocess Image</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Preprocessing</h1>
+    <form action="/realtime_process" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image_p">
+        <input type="submit" value="Preprocess">
+    </form>
+    {% if num_contours %}
+    {% if filename_real %}
+    {% if actualreal_l %}
+    {% if actualreal_w %}
+
+    <table>
+           <tr>
+                <th>real image</th>
+                <th>Serial Number</th>
+                <th>Shape</th>
+                <th>Actual length</th>
+                <th>Actual width</th> 
+                
+
+
+           </tr>
+            
+           {% for i in range(num_contours) %}
+               
+                <tr>
+                    {% if i == 0 %}
+                        <td rowspan="{{ num_contours }}"><img src="{{ url_for('static', filename='real_image/' ~ filename_real) }}"></td>
+                    {% endif %}
+                    <td>{{ i+1 }}</td>
+                    <td><img src="{{ url_for('static', filename='real_contour_image/contour_' ~ i|string ~ '.png') }}" alt="Contour {{ i+1 }}"></td>
+                    <td>{{ actualreal_l[i] }}</td>
+                    <td>{{ actualreal_w[i] }}</td>
+ 
+                </tr>
+           {% endfor %}
+            
+    </table>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}  
+    
+    <form action="{{ url_for('index') }}" method="get">
+    <button type="submit">Go back to index</button>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+                
+            
+            
+
+
