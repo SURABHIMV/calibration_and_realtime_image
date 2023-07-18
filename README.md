@@ -4,7 +4,7 @@ This repository contains code for the calibration of images, viewing that proces
 
 
 ## Roadmap to reproduce the result
-* In Anaconda create a new environment within this environment install all the required libraries as mentioned in (Libraries and Versions) and within this same environment open the spyder IDE.
+* In Anaconda create a new environment within this environment install all the required libraries as mentioned in (Libraries and Versions) and within this same environment open the IDE.
 
 * In the local system create a new folder such that all the files which are to run in Spyder IDE are stored. Within this folder create a templates folder where all the required HTML files are stored. also, create folders for storing the original image, processed image, and real-time image separately. Create a text file(data.text) for storing the dictionary format of information where 'key' represents the image name, and 'value' contains the multiplication factors of all contours of that particular image.
 
